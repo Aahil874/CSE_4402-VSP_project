@@ -5,7 +5,16 @@ A lightweight, high-performance 2D hardware-accelerated gameplay engine engineer
 Inspired by classic retro baseball games (like *R.B.I. Baseball* and *Bases Loaded*), **Project Home Run!** modernizes old-school arcade physics using modern graphics rendering techniques.
 
 ---
+## 👥 Development Team & Task Allocation
 
+Our team is structured to handle the core subsystems of the game engine, split between graphics rendering, gameplay mechanics, and interface controls.
+| Student ID | Name |
+| :--- | :--- |
+| **230041108** | Hasan bin Mohammad |
+| **230041111** | Sami Rahman |
+| **230041133** | Aahil Zaman |
+
+---
 ## 🚀 Core Features
 
 *   **Hardware Accelerated Engine:** Leverages GPU acceleration to ensure a steady, high-performance frame rate and smooth sprite handling.
@@ -23,12 +32,3 @@ Inspired by classic retro baseball games (like *R.B.I. Baseball* and *Bases Load
 *   **Language Environment:** Java / JavaFX *(Adjust if you are using C++/OpenGL/Raylib!)*
 
 ---
-
-## 👥 Development Team & Task Allocation
-
-Our team is structured to handle the core subsystems of the game engine, split between graphics rendering, gameplay mechanics, and interface controls.
-| Student ID | Name |
-| :--- | :--- |
-| **230041108** | Hasan bin Mohammad |
-| **230041111** | Sami Rahman |
-| **230041133** | Aahil Zaman |
