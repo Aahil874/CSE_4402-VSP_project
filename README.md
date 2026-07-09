@@ -29,6 +29,6 @@ Our team is structured to handle the core subsystems of the game engine, split b
 *   **Course Code:** CSE_4402 (Visual System Programming)
 *   **Platform:** 2D Gameplay Engine
 *   **Graphics & Pipeline:** Hardware Accelerated 2D Rendering Engine
-*   **Language Environment:** Java / JavaFX **
+*   **Language Environment:** Java / JavaFX
 
 ---
