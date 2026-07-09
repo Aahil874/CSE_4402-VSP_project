@@ -1,0 +1,55 @@
+/* Apply the background image to the main scene root */
+.root {
+    /* 1. Tell it where the image is (relative path to application.css) */
+    -fx-background-image: url("main_menu_bg.png");
+    
+    /* 2. Scale the image to cover the entire window proportionally */
+    -fx-background-size: cover;
+    
+    /* 3. Center the background */
+    -fx-background-position: center center;
+    
+    /* 4. Do not repeat the image */
+    -fx-background-repeat: no-repeat;
+}
+
+/* The vertical menu alignment wrapper: We make it translucent to show the background */
+.menu-container {
+    -fx-padding: 40px;
+    -fx-alignment: CENTER; /* Ensure everything stays dead center */
+}
+
+/* Big, bold retro typography for the title (like 'HOME RUN' in image_1.png) */
+.menu-title {
+    -fx-font-size: 46px;
+    -fx-font-weight: 900;
+    -fx-text-fill: white;
+    /* You may need to load a specific pixel font if Impact isn't enough */
+    -fx-font-family: 'Impact', 'Arial Black', 'Courier New', monospace;
+    -fx-effect: dropshadow(three-pass-box, black, 10, 0.0, 2, 2); /* Essential for contrast */
+}
+
+/* Premium translucent modern buttons: We update these to pop against the detailed background */
+.menu-button {
+    -fx-background-color: rgba(255, 255, 255, 0.15); /* Slightly more translucent white */
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-font-family: 'Segoe UI', Arial, sans-serif;
+    -fx-min-width: 280px;
+    -fx-min-height: 48px;
+    -fx-background-radius: 20px; /* Rounded pill style looks good on dark retro BGs */
+    -fx-border-color: rgba(255, 255, 255, 0.4);
+    -fx-border-radius: 20px;
+    -fx-border-width: 1px;
+    -fx-cursor: hand;
+    -fx-transition: all 0.2s ease-in-out;
+}
+
+/* Dynamic Hover Effect */
+.menu-button:hover {
+    -fx-background-color: white;
+    -fx-text-fill: #0F2027; /* Dark text on white BG */
+    -fx-scale-x: 1.05; /* Smooth hover micro-zoom scaling */
+    -fx-scale-y: 1.05;
+}
