@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #1e293b;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MatchScreenController">
+   <children>
+      <VBox alignment="CENTER" spacing="20.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+         <children>
+            <Label text="LIVE MATCH SIMULATION" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            
+            <!-- Scoreboard Row -->
+            <HBox alignment="CENTER" spacing="50.0">
+               <children>
+                  <VBox alignment="CENTER">
+                     <children>
+                        <Label fx:id="homeTeamLabel" text="Home Team" textFill="#60a5fa">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="homeScoreLabel" text="0" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="48.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <Label text="VS" textFill="#94a3b8">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <VBox alignment="CENTER">
+                     <children>
+                        <Label fx:id="awayTeamLabel" text="Away Team" textFill="#f87171">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="awayScoreLabel" text="0" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="48.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            
+            <Label fx:id="inningLabel" text="Inning: Pregame" textFill="#e2e8f0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            
+            <!-- Live Commentary Box -->
+            <TextArea fx:id="commentaryBox" editable="false" prefHeight="250.0" prefWidth="760.0" style="-fx-control-inner-background: #0f172a; -fx-text-fill: #38bdf8;" wrapText="true">
+               <font>
+                  <Font name="Monospaced Regular" size="14.0" />
+               </font>
+            </TextArea>
+            
+            <!-- Interaction Buttons -->
+            <HBox alignment="CENTER" spacing="20.0">
+               <children>
+                  <Button fx:id="nextPitchBtn" mnemonicParsing="false" onAction="#onNextPitch" style="-fx-background-color: #22c55e; -fx-text-fill: white;" text="Simulate Next Pitch">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="leaveMatchBtn" disable="true" mnemonicParsing="false" onAction="#onLeaveMatch" style="-fx-background-color: #ef4444; -fx-text-fill: white;" text="Return to Main Menu">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

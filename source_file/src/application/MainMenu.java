@@ -69,7 +69,7 @@ public class MainMenu extends Application {
     private void playNextRandomSong() {
         try {
             String selectedTrack = playlist[random.nextInt(playlist.length)];
-            java.net.URL resource = getClass().getResource("/application/songs2/" + selectedTrack);
+            java.net.URL resource = getClass().getResource("/songs2/" + selectedTrack);
             
             if (resource == null) {
                 System.out.println("Could not locate track: " + selectedTrack);
