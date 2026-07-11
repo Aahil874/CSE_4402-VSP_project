@@ -18,7 +18,7 @@
    <children>
       <ImageView fx:id="menuBackgroundImg" fitHeight="1000.0" fitWidth="1200.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
-            <Image url="@main_menu_bg.png" />
+            <Image url="@../pictures/main_menu_bg.png" />
          </image>
       </ImageView>
       <VBox alignment="CENTER" layoutX="41.0" layoutY="20.0" prefWidth="800.0" spacing="10.0" styleClass="menu-container" stylesheets="@application.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -52,7 +52,7 @@
                            <children>
                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@play_new_match.jpg" />
+                                    <Image url="@../pictures/play_new_match.jpg" />
                                  </image>
                               </ImageView>
                               <Label alignment="CENTER" text="PLAY NEW MATCH" VBox.vgrow="NEVER">
@@ -112,7 +112,7 @@
                            <children>
                               <ImageView fitHeight="70.0" fitWidth="70.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@training_match.jpg" />
+                                    <Image url="@../pictures/training_match.jpg" />
                                  </image>
                               </ImageView>
                               <Label alignment="CENTER" graphicTextGap="10.0" prefHeight="57.0" prefWidth="183.0" text="TRAINING">
@@ -167,7 +167,7 @@
                               </Label>
                               <ImageView fitHeight="140.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@player_transfer.jpg" />
+                                    <Image url="@../pictures/player_transfer.jpg" />
                                  </image>
                               </ImageView>
                            </children>
@@ -201,7 +201,7 @@
                               </Label>
                               <ImageView fitHeight="80.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@stadium_selection.jpg" />
+                                    <Image url="@../pictures/stadium_selection.jpg" />
                                  </image>
                               </ImageView>
                            </children>
