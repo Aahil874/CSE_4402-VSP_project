@@ -1,7 +1,8 @@
-module vsp_project {
+module YourProjectName {
     requires javafx.controls;
-    requires javafx.fxml; // <-- MAKE SURE THIS LINE IS HERE
-
-    opens application to javafx.fxml; // <-- ALLOWS FXML TO READ YOUR CONTROLLER
-    exports application;
+    requires javafx.fxml;
+    requires javafx.media;
+    requires java.desktop; // <-- ADD THIS LINE HERE
+    
+    opens application to javafx.graphics, javafx.fxml;
 }
