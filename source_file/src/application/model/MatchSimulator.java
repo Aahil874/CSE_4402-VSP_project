@@ -1,79 +1,145 @@
 package application.model;
 
-import java.util.Random;
-
 public class MatchSimulator {
     private Team homeTeam;
     private Team awayTeam;
-    private Random random;
+
+    // Match State Variables
+    private int homeScore = 0;
+    private int awayScore = 0;
+    private int currentInning = 1;
+    private boolean isTopInning = true; // true = Top (Away batting), false = Bottom (Home batting)
+    
+    private int balls = 0;
+    private int strikes = 0;
+    private int outs = 0;
+
+    // Roster Indexes to rotate through batters/pitchers
+    private int homeBatterIndex = 0;
+    private int awayBatterIndex = 0;
 
     public MatchSimulator(Team homeTeam, Team awayTeam) {
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;
-        this.random = new Random();
     }
 
-    public void simulateMatch() {
-        System.out.println("\n🏟️ MATCH START: " + awayTeam.getTeamName() + " @ " + homeTeam.getTeamName());
-        System.out.println("----------------------------------------");
+    // --- Active Player Retrieval ---
 
-        int homeScore = 0;
-        int awayScore = 0;
-
-        // Simple baseball logic simulation: 9 Innings
-        for (int inning = 1; inning <= 9; inning++) {
-            // Away team bats first, Home team bats second
-            awayScore += simulateHalfInning(awayTeam, homeTeam, inning, "Top");
-            homeScore += simulateHalfInning(homeTeam, awayTeam, inning, "Bottom");
-        }
-
-        System.out.println("----------------------------------------");
-        System.out.println("🏆 FINAL SCORE:");
-        System.out.println(awayTeam.getTeamName() + ": " + awayScore);
-        System.out.println(homeTeam.getTeamName() + ": " + homeScore);
+    /**
+     * Returns the active batter based on who is at bat (Top = Away, Bottom = Home).
+     */
+    public Player getCurrentBatter() {
+        Team battingTeam = isTopInning ? awayTeam : homeTeam;
+        int index = isTopInning ? awayBatterIndex : homeBatterIndex;
         
-        if (homeScore > awayScore) {
-            System.out.println("🎉 Winner: " + homeTeam.getTeamName());
-        } else if (awayScore > homeScore) {
-            System.out.println("🎉 Winner: " + awayTeam.getTeamName());
-        } else {
-            System.out.println("🤝 It's a Tie!");
+        if (battingTeam.getRoster() == null || battingTeam.getRoster().isEmpty()) {
+            return null;
         }
-        System.out.println("----------------------------------------\n");
+        return battingTeam.getRoster().get(index % battingTeam.getRoster().size());
     }
 
-    private int simulateHalfInning(Team battingTeam, Team pitchingTeam, int inning, String half) {
-        int runsScored = 0;
-        int outs = 0;
+    /**
+     * Returns the active pitcher from the defending team.
+     */
+    public Player getCurrentPitcher() {
+        Team pitchingTeam = isTopInning ? homeTeam : awayTeam;
+        if (pitchingTeam.getRoster() == null || pitchingTeam.getRoster().isEmpty()) {
+            return null;
+        }
 
-        // Grab a representative batter and pitcher for the simulation calculations
-        Player batter = battingTeam.getRoster().get(0); // Simple selection for now
-        Player pitcher = pitchingTeam.getRoster().stream()
+        // Try finding a designated Pitcher, or fallback to the second player
+        return pitchingTeam.getRoster().stream()
                 .filter(p -> "Pitcher".equalsIgnoreCase(p.getPosition()))
                 .findFirst()
-                .orElse(pitchingTeam.getRoster().get(1));
-
-        while (outs < 3) {
-            // Core formula: Compare batter's contact vs pitcher's control + random variance
-            int roll = random.nextInt(100) + 1; // 1 to 100
-            int advantage = batter.getContact() - pitcher.getPitchingControl();
-            int calculationValue = roll + advantage;
-
-            if (calculationValue > 75) {
-                runsScored++; // A great hit drives home a run
-            } else if (calculationValue < 40) {
-                outs++; // Batter gets struck out or caught out
-            } else {
-                // Base runner or walk scenario (chance to score or advance)
-                if (random.nextBoolean()) {
-                    runsScored++;
-                } else {
-                    outs++;
-                }
-            }
-        }
-        
-        System.out.println("[" + half + " Inning " + inning + "] " + battingTeam.getTeamName() + " scores " + runsScored + " runs.");
-        return runsScored;
+                .orElse(pitchingTeam.getRoster().get(Math.min(1, pitchingTeam.getRoster().size() - 1)));
     }
+
+    // --- Real-time Game Event Handlers ---
+
+    public void recordStrike() {
+        strikes++;
+        if (strikes >= 3) {
+            recordOut();
+        }
+    }
+
+    public void recordBall() {
+        balls++;
+        if (balls >= 4) {
+            // Walk / Base on balls
+            resetCount();
+            rotateBatter();
+        }
+    }
+
+    public void recordOut() {
+        outs++;
+        resetCount();
+        rotateBatter();
+
+        if (outs >= 3) {
+            advanceInning();
+        }
+    }
+
+    public void recordRun(int count) {
+        if (isTopInning) {
+            awayScore += count;
+        } else {
+            homeScore += count;
+        }
+    }
+
+    public void recordHitSuccess() {
+        resetCount();
+        rotateBatter();
+    }
+
+    private void resetCount() {
+        this.balls = 0;
+        this.strikes = 0;
+    }
+
+    private void rotateBatter() {
+        if (isTopInning) {
+            awayBatterIndex++;
+        } else {
+            homeBatterIndex++;
+        }
+    }
+
+    private void advanceInning() {
+        outs = 0;
+        resetCount();
+
+        if (isTopInning) {
+            isTopInning = false; // Switch to Bottom Inning
+        } else {
+            isTopInning = true;  // Switch to Top of next Inning
+            currentInning++;
+        }
+    }
+
+    // --- Display Utility Helpers ---
+
+    public String getInningDisplay() {
+        String half = isTopInning ? "TOP" : "BOT";
+        return "Inning: " + currentInning + " " + half;
+    }
+
+    public String getCountDisplay() {
+        return "B: " + balls + " | S: " + strikes + " | O: " + outs;
+    }
+
+    // --- Getters & Setters ---
+
+    public Team getHomeTeam() { return homeTeam; }
+    public Team getAwayTeam() { return awayTeam; }
+    public int getHomeScore() { return homeScore; }
+    public int getAwayScore() { return awayScore; }
+    public int getCurrentInning() { return currentInning; }
+    public boolean isTopInning() { return isTopInning; }
+    public int getBalls() { return balls; }
+    public int getStrikes() { return strikes; }
+    public int getOuts() { return outs; }
 }
