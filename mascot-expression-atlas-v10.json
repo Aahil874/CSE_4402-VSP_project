@@ -1,0 +1,30 @@
+{
+  "image": "mascot-expression-atlas-v10.png",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "rows": {
+    "TURBO_TANUKI": 0,
+    "BUBBLE_BUNNY": 1,
+    "ROCKET_REX": 2,
+    "NOVA_NEKO": 3
+  },
+  "animations": {
+    "DETERMINED": {"column": 0, "durationMs": 160, "loop": true, "anchorX": 0.5, "anchorY": 0.96},
+    "HAPPY": {"column": 1, "durationMs": 160, "loop": true, "anchorX": 0.5, "anchorY": 0.96},
+    "SURPRISED": {"column": 2, "durationMs": 180, "loop": false, "anchorX": 0.5, "anchorY": 0.96},
+    "ANGRY": {"column": 3, "durationMs": 160, "loop": true, "anchorX": 0.5, "anchorY": 0.96},
+    "TIRED": {"column": 4, "durationMs": 220, "loop": true, "anchorX": 0.5, "anchorY": 0.96},
+    "VICTORY": {"column": 5, "durationMs": 150, "loop": true, "anchorX": 0.5, "anchorY": 0.96}
+  },
+  "actionAtlas": {
+    "image": "mascot-action-atlas-v16.png",
+    "frameWidth": 320,
+    "frameHeight": 384,
+    "columns": {
+      "IDLE": 0,
+      "PITCH_WINDUP": 1,
+      "SWING_ANTICIPATION": 2,
+      "RUNNING": 3
+    }
+  }
+}

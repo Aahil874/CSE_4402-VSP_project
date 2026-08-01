@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane prefHeight="720.0" prefWidth="1180.0" styleClass="hero-screen"
+           stylesheets="@grand-prix.css"
+           xmlns="http://javafx.com/javafx/21"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="application.MenuController">
+    <children>
+        <BorderPane styleClass="hero-overlay">
+            <left>
+                <VBox alignment="CENTER_LEFT" maxWidth="650.0" spacing="8.0">
+                    <padding>
+                        <Insets bottom="52.0" left="58.0" right="30.0" top="52.0" />
+                    </padding>
+                    <Label styleClass="eyebrow-label" text="MASCOT LEAGUE PRESENTS" />
+                    <Label styleClass="mega-title" text="MASCOT" />
+                    <Label styleClass="mega-title,accent-title" text="BASEBALL" />
+                    <Label styleClass="grand-prix-title" text="GRAND PRIX" />
+                    <Label maxWidth="550.0" styleClass="hero-copy" text="Pitch with precision. Swing for the stars. Build turbo combos and become the stadium champion." wrapText="true" />
+                    <Region prefHeight="18.0" />
+                    <HBox spacing="10.0">
+                        <Label styleClass="feature-chip" text="4 MASCOTS" />
+                        <Label styleClass="feature-chip" text="2-WAY PLAY" />
+                        <Label styleClass="feature-chip" text="MYSQL RANKINGS" />
+                    </HBox>
+                </VBox>
+            </left>
+
+            <right>
+                <VBox alignment="CENTER" maxWidth="440.0" spacing="12.0" styleClass="glass-panel,menu-card">
+                    <BorderPane.margin>
+                        <Insets bottom="46.0" right="54.0" top="46.0" />
+                    </BorderPane.margin>
+                    <padding>
+                        <Insets bottom="30.0" left="34.0" right="34.0" top="30.0" />
+                    </padding>
+
+                    <Label styleClass="panel-kicker" text="PLAYER GARAGE" />
+                    <Label styleClass="panel-title" text="CHOOSE YOUR RACER" />
+                    <Label styleClass="field-label" text="REGISTERED PLAYERS" />
+                    <ComboBox fx:id="registeredPlayersComboBox" maxWidth="340.0"
+                              onAction="#handleSelectPlayer" prefWidth="340.0"
+                              promptText="SELECT PLAYER" />
+                    <Label styleClass="field-label" text="NEW PLAYER NAME" />
+                    <TextField fx:id="playerNameField" alignment="CENTER" maxWidth="340.0"
+                               onAction="#handlePlay" promptText="PLAYER 1" />
+                    <Button maxWidth="340.0" onAction="#handleRegister"
+                            styleClass="button,secondary-button" text="REGISTER PLAYER" />
+                    <Label fx:id="feedbackLabel" minHeight="24.0" styleClass="feedback-label" />
+
+                    <Button defaultButton="true" maxWidth="340.0" onAction="#handlePlay"
+                            styleClass="button,primary-button" text="START GRAND PRIX" />
+                    <HBox alignment="CENTER" spacing="10.0">
+                        <Button onAction="#handleSettings" text="SETTINGS" />
+                        <Button onAction="#handleLeaderboard" text="LEADERBOARD" />
+                        <Button onAction="#handleExit" styleClass="button,danger-button" text="EXIT" />
+                    </HBox>
+                    <Button maxWidth="340.0" onAction="#handleDatabase"
+                            styleClass="button,secondary-button" text="DATABASE CONNECTION" />
+                    <Label alignment="CENTER" maxWidth="350.0" styleClass="tiny-help"
+                           text="MOUSE = AIM + MOVE&#10;LEFT CLICK = PITCH   |   RIGHT CLICK = SWING&#10;WASD / P / SPACE ALSO WORK"
+                           textAlignment="CENTER" wrapText="true" />
+                </VBox>
+            </right>
+        </BorderPane>
+    </children>
+</StackPane>

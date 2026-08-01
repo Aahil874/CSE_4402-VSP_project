@@ -1,0 +1,19 @@
+{
+  "image": "mascot-fielding-atlas-v10.png",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "rows": {
+    "TURBO_TANUKI": 0,
+    "BUBBLE_BUNNY": 1,
+    "ROCKET_REX": 2,
+    "NOVA_NEKO": 3
+  },
+  "animations": {
+    "SLIDING": {"column": 0, "durationMs": 140, "loop": false, "anchorX": 0.5, "anchorY": 0.96},
+    "FIELDING": {"column": 1, "durationMs": 120, "loop": true, "anchorX": 0.5, "anchorY": 0.96},
+    "CATCHING": {"column": 2, "durationMs": 160, "loop": false, "anchorX": 0.5, "anchorY": 0.96},
+    "THROWING": {"column": 3, "durationMs": 140, "loop": false, "anchorX": 0.5, "anchorY": 0.96},
+    "SAFE_CELEBRATION": {"column": 4, "durationMs": 180, "loop": false, "anchorX": 0.5, "anchorY": 0.96},
+    "LOSING_REACTION": {"column": 5, "durationMs": 220, "loop": true, "anchorX": 0.5, "anchorY": 0.96}
+  }
+}
