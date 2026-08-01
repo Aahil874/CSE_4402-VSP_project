@@ -1,0 +1,19 @@
+{
+  "image": "turbo-tanuki-action-atlas-v15.png",
+  "columns": 4,
+  "rows": 4,
+  "cellWidth": 313.5,
+  "cellHeight": 313.5,
+  "poses": [
+    "IDLE", "READY", "PITCH_WINDUP", "PITCH_RELEASE",
+    "BATTING_STANCE", "SWING_ANTICIPATION", "CONTACT", "FOLLOW_THROUGH",
+    "RUNNING", "BASE_ROUNDING", "SLIDING", "GROUND_FIELDING",
+    "CATCHING", "THROWING", "SAFE", "OUT_REACTION"
+  ],
+  "anchors": {
+    "foot": [0.50, 0.94],
+    "glove": [0.68, 0.48],
+    "batHand": [0.54, 0.48],
+    "ballRelease": [0.76, 0.32]
+  }
+}
