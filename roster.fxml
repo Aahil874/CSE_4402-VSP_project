@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<StackPane prefHeight="720.0" prefWidth="1180.0" styleClass="hero-screen" stylesheets="@grand-prix.css"
+ xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+ fx:controller="application.RosterController">
+ <fx:define><Image fx:id="rosterAtlas" url="@mascot-roster-atlas-v11.png"/></fx:define>
+ <children><VBox alignment="CENTER" maxWidth="1040.0" spacing="14.0" styleClass="glass-panel,roster-panel">
+  <padding><Insets bottom="24" left="32" right="32" top="22"/></padding>
+  <Label styleClass="panel-kicker" text="12 ORIGINAL CREATURE ALL-STARS"/>
+  <Label styleClass="screen-title" text="BUILD YOUR MASCOT CLUB"/>
+  <Label fx:id="playerLabel" styleClass="player-banner" text="PLAYER 1"/>
+  <HBox alignment="CENTER" spacing="32">
+   <VBox alignment="CENTER" spacing="10">
+    <ImageView fx:id="portraitImage" fitHeight="300" fitWidth="270" image="$rosterAtlas" preserveRatio="true" smooth="true"/>
+    <ComboBox fx:id="mascotComboBox" prefWidth="280"/>
+   </VBox>
+   <VBox alignment="CENTER_LEFT" maxWidth="620" spacing="10" styleClass="preview-strip">
+    <Label fx:id="mascotNameLabel" styleClass="preview-title" wrapText="true"/>
+    <Label fx:id="descriptionLabel" styleClass="preview-copy" wrapText="true"/>
+    <Label fx:id="statsLabel" styleClass="stats-label" wrapText="true"/>
+    <Label fx:id="lineupLabel" styleClass="preview-copy" wrapText="true"/>
+   </VBox>
+  </HBox>
+  <HBox alignment="CENTER" spacing="16">
+   <Button onAction="#handleBack" styleClass="button,secondary-button" text="BACK"/>
+   <Button defaultButton="true" onAction="#handleStartGame" styleClass="button,primary-button" text="CUSTOMIZE PITCHING"/>
+  </HBox>
+ </VBox></children>
+</StackPane>
