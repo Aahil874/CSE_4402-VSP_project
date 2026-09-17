@@ -1,0 +1,24 @@
+{
+  "image": "mascot-action-atlas-v16.png",
+  "columns": 4,
+  "rows": 12,
+  "cellWidth": 320,
+  "cellHeight": 384,
+  "actions": ["IDLE", "PITCH", "SWING", "RUN"],
+  "mascots": [
+    "TURBO_TANUKI",
+    "BUBBLE_BUNNY",
+    "ROCKET_REX",
+    "NOVA_NEKO",
+    "BLAZE_FALCON",
+    "FROST_WOLF",
+    "REEF_SHARK",
+    "MAPLE_RED_PANDA",
+    "HARBOR_TURTLE",
+    "EMBER_DRAGON",
+    "VOLT_TIGER",
+    "CIRCUIT_BOT"
+  ],
+  "anchor": {"x": 0.5, "y": 0.94},
+  "notes": "All 12 mascots have gameplay-ready idle, pitch, swing, and run frames."
+}
