@@ -1,0 +1,64 @@
+FINAL_HOMERUN - JAVA 21
+
+QUICK START (Windows x64)
+1. Extract the entire ZIP if using the delivered archive.
+2. Double-click RUN_GAME.cmd. It rebuilds the project and launches application.Main.
+3. If MySQL is unavailable, the existing game automatically continues offline.
+   You can also choose PLAY OFFLINE. Persistent rankings require MySQL.
+
+The launcher requires Java 21. It checks JAVA_HOME, the two Java 21 installations
+on this computer, and Java on PATH. On another computer, set JAVA_HOME to JDK 21.
+JavaFX 21.0.12, its Windows DLLs, Connector/J 8.0.25, and the Eclipse compiler
+are included. No Maven download or extra Eclipse plugin is required.
+
+RUN IN ECLIPSE
+1. Refresh final_homerun (select project, press F5).
+2. In Window > Preferences > Java > Installed JREs, ensure a JDK 21 is present.
+   Installed here: C:\Program Files\Java\jdk-21.0.12
+   Under Execution Environments, assign a JDK 21 to JavaSE-21.
+3. Project > Clean > final_homerun.
+4. Right-click "final_homerun Java 21.launch" > Run As > final_homerun Java 21.
+   If that entry is not offered, open Run > Run Configurations > Java Application,
+   select "final_homerun Java 21", then Run.
+   Alternatively, right-click src/application/Main.java > Run As > Java Application.
+5. Use this named configuration in the Run dropdown for later launches.
+
+Do not add a JavaFX user-library/container alongside the supplied library entries.
+All required JARs are already on the project's module path, using relative paths.
+The included launch configuration selects final_homerun/application.Main and JavaSE-21.
+
+IMPORTING THE ZIP COPY
+The project retains its original name, final_homerun. Eclipse cannot import two
+projects with that name into one workspace. Use a separate Eclipse workspace
+(File > Switch Workspace) to import the ZIP via File > Import > General >
+Existing Projects into Workspace > Select archive file. The already-open project
+can use the applied fixes directly after refresh and clean.
+
+WHAT WAS FOUND / FIXED
+- Original application.Main successfully launched on Java 21; no source compilation
+  errors were found using Eclipse's Java compiler. The base game code is unchanged.
+- Saved launch configurations inspected in the Eclipse workspace did not include
+  final_homerun. An existing Main configuration referred to movieBrowser. A generic
+  Run action may repeat a different project's launch. The precise earlier failing
+  Eclipse console message was unavailable, so that cause cannot be stated conclusively.
+- Original library paths were absolute paths into Downloads. They are now relative
+  paths to bundled libraries. Unused JavaFX library entries were removed from .classpath.
+- Added an explicit Java 21 Eclipse launch, RUN_GAME.cmd, TEST_GAME.cmd and run.ps1.
+- The standalone build uses the bundled Eclipse compiler with -21. javac encountered
+  a filesystem real-path restriction inside the verification tool's sandbox; this
+  was a tooling limitation, not evidence of broken game source or corrupt JARs.
+
+VERIFIED
+- Full source rebuilt using Eclipse compiler 3.46.0 targeting Java 21.
+- Original and rebuilt application.Main opened the game window on Java 21.
+- Standalone run.ps1 build and launch verified.
+- Seven tests passed: OfflineModeSmokeTest, BattingBalanceTest,
+  GameplaySimulationTest, CompetitiveFieldLayoutTest, OverheadFieldGeometryTest,
+  RulesEditionValidationTest, MascotAtlasValidationTest.
+- Existing unused-code warnings are retained to preserve the base code.
+- Live MySQL integration/round-trip tests were not run; they write database records.
+  The successful offline tests do not establish live database persistence.
+
+To rerun tests: TEST_GAME.cmd
+To build only: powershell -NoProfile -ExecutionPolicy Bypass -File .\run.ps1 -BuildOnly
+Compiler diagnostics: build\compile.log

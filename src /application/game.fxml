@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="850.0" prefWidth="1280.0" minHeight="540.0" minWidth="760.0"
+            styleClass="game-root" stylesheets="@grand-prix.css"
+            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="application.GameController">
+    <top>
+        <VBox spacing="0.0">
+            <FlowPane alignment="CENTER_LEFT" hgap="24.0" vgap="7.0" styleClass="race-scoreboard">
+                <padding><Insets bottom="8.0" left="20.0" right="20.0" top="8.0" /></padding>
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                    <Label styleClass="scoreboard-logo" text="MBGP" />
+                    <Label styleClass="team-caption" text="YOU" />
+                    <Label fx:id="playerRunsLabel" styleClass="run-value" text="0" />
+                    <Label styleClass="team-caption" text="RIVAL" />
+                    <Label fx:id="rivalRunsLabel" styleClass="run-value,rival-run" text="0" />
+                </HBox>
+                <HBox alignment="CENTER_LEFT" spacing="9.0" styleClass="count-group">
+                    <Label styleClass="count-caption" text="Balls" />
+                    <Label fx:id="ballsLabel" styleClass="count-value" text="0" />
+                    <Label styleClass="count-caption" text="Strikes" />
+                    <Label fx:id="strikesLabel" styleClass="count-value" text="0" />
+                    <Label styleClass="count-caption" text="Outs" />
+                    <Label fx:id="outsLabel" styleClass="count-value" text="0" />
+                    <Label fx:id="baseDiamondLabel" alignment="CENTER" minWidth="38.0"
+                           accessibleText="Occupied bases" styleClass="base-diamond" text="&#9671;&#10;&#9671; &#9671;">
+                        <tooltip><Tooltip text="Bases: filled diamonds indicate runners on base." /></tooltip>
+                    </Label>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" spacing="8.0">
+                    <Label fx:id="inningLabel" styleClass="inning-value" text="INNING 1/3" />
+                    <Label fx:id="phaseLabel" styleClass="phase-pill" text="TOP · YOU PITCH" />
+                    <Label fx:id="difficultyLabel" styleClass="difficulty-pill" text="EASY" />
+                    <Label fx:id="comboLabel" visible="false" managed="false" text="x0" />
+                </HBox>
+            </FlowPane>
+            <HBox alignment="CENTER_LEFT" spacing="14.0" styleClass="score-strip">
+                <padding><Insets bottom="7.0" left="20.0" right="20.0" top="6.0" /></padding>
+                <Label fx:id="playerLabel" visible="false" managed="false" text="PLAYER 1" />
+                <Label fx:id="mascotLabel" wrapText="true" maxWidth="Infinity"
+                       styleClass="hud-accent" text="BATTER: TURBO TANUKI · PITCHER: ROCKET REX" HBox.hgrow="ALWAYS" />
+            </HBox>
+        </VBox>
+    </top>
+    <center>
+        <StackPane fx:id="viewportPane" alignment="CENTER" minWidth="0.0" minHeight="0.0" styleClass="canvas-shell">
+            <Canvas fx:id="gameCanvas" focusTraversable="true" height="650.0"
+                    accessibleText="Baseball field. Move the mouse to aim. Controls below match your current role."
+                    styleClass="game-canvas" width="1180.0" />
+        </StackPane>
+    </center>
+    <bottom>
+        <VBox alignment="CENTER" spacing="6.0" styleClass="control-deck">
+            <padding><Insets bottom="10.0" left="18.0" right="18.0" top="9.0" /></padding>
+            <Label fx:id="statusLabel" maxWidth="Infinity" wrapText="true" alignment="CENTER"
+                   styleClass="status-banner" text="Aim inside the strike zone." />
+            <Label fx:id="pitchMetricsLabel" maxWidth="Infinity" wrapText="true" alignment="CENTER"
+                   styleClass="pitch-metrics" text="" />
+            <FlowPane alignment="CENTER" hgap="16.0" vgap="8.0">
+                <HBox alignment="CENTER" spacing="7.0">
+                    <Label styleClass="deck-label" text="POWER" />
+                    <ProgressBar fx:id="turboMeter" prefWidth="110.0" progress="0.0" />
+                    <Label fx:id="turboLabel" minWidth="34.0" styleClass="turbo-value" text="0%" />
+                </HBox>
+                <HBox fx:id="pitchControls" alignment="CENTER" spacing="6.0">
+                    <Button fx:id="pitchPreviousButton" onAction="#handleLeft" text="A  &#9664;" accessibleText="Previous pitch type, A" />
+                    <Label fx:id="pitchTypeLabel" minWidth="176.0" alignment="CENTER"
+                           styleClass="pitch-value" text="FOUR-SEAM FASTBALL" />
+                    <Button fx:id="pitchNextButton" onAction="#handleRight" text="&#9654;  D" accessibleText="Next pitch type, D" />
+                </HBox>
+                <HBox fx:id="aimControls" alignment="CENTER" spacing="6.0">
+                    <Label fx:id="aimLabel" minWidth="100.0" alignment="CENTER" styleClass="aim-value" text="CENTER" />
+                    <Button onAction="#handleAimUp" text="W  &#8593;" accessibleText="Aim higher, W" />
+                    <Button onAction="#handleAimDown" text="S  &#8595;" accessibleText="Aim lower, S" />
+                </HBox>
+                <HBox alignment="CENTER" spacing="7.0">
+                    <Button fx:id="primaryButton" onAction="#handlePrimaryAction"
+                            styleClass="button,primary-button" text="PITCH  [P]" />
+                    <Button fx:id="swingButton" onAction="#handleSwing" visible="false" managed="false"
+                            styleClass="button,swing-button" text="SWING  [SPACE]" />
+                    <Button fx:id="pauseButton" onAction="#handlePause" text="PAUSE  [ESC]" />
+                    <Button onAction="#handleMainMenu" styleClass="button,danger-button" text="QUIT" />
+                </HBox>
+            </FlowPane>
+            <Label fx:id="inputHelpLabel" maxWidth="Infinity" wrapText="true" alignment="CENTER"
+                   styleClass="mouse-help" text="Mouse to aim · Click or P to pitch · A / D to select pitch" />
+        </VBox>
+    </bottom>
+</BorderPane>
