@@ -39,8 +39,7 @@ Our team is structured to handle the core subsystems of the game engine, split b
 
 ### 🪟 On Windows
 Double-click `run.bat` or open Command Prompt in the project folder and run:
-bash
-./run.sh
+`./run.sh`
 ### 🐧 On Linux (Fedora/Ubuntu) / macOS
 Open Terminal in the project folder and run:
 ---
