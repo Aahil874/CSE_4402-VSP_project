@@ -32,3 +32,18 @@ Our team is structured to handle the core subsystems of the game engine, split b
 *   **Language Environment:** Java / JavaFX
 *   ** JDK 21 is required to compile and run this application
 ---
+
+---
+
+## 🚀 How to Run the Game
+
+### 🪟 On Windows
+Double-click `run.bat` or open Command Prompt in the project folder and run:
+run.bat
+### 🐧 On Linux (Fedora/Ubuntu) / macOS
+Open Terminal in the project folder and run:
+---
+
+## 📋 Requirements
+- Java 17 or higher
+- System OpenJFX (for Linux: `sudo dnf install openjfx`)
