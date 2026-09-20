@@ -39,7 +39,7 @@ public final class LeaderboardController {
     @FXML
     private void initialize() {
         scoreTable.setColumnResizePolicy(
-                TableView.CONSTRAINED_RESIZE_POLICY_FLEX_LAST_COLUMN);
+                TableView.CONSTRAINED_RESIZE_POLICY);
         rankColumn.setCellValueFactory(cell ->
                 new ReadOnlyIntegerWrapper(scoreTable.getItems().indexOf(cell.getValue()) + 1));
         playerColumn.setCellValueFactory(cell ->
