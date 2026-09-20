@@ -1,0 +1,14 @@
+{
+  "image": "mascot-roster-atlas-v11.png",
+  "columns": 3,
+  "rows": 4,
+  "cellWidth": 341,
+  "cellHeight": 384,
+  "anchor": {"x": 0.5, "y": 0.96},
+  "order": [
+    "TURBO_TANUKI", "BUBBLE_BUNNY", "ROCKET_REX",
+    "NOVA_NEKO", "BLAZE_FALCON", "FROST_WOLF",
+    "REEF_SHARK", "MAPLE_RED_PANDA", "HARBOR_TURTLE",
+    "EMBER_DRAGON", "VOLT_TIGER", "CIRCUIT_BOT"
+  ]
+}

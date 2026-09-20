@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane prefHeight="720.0" prefWidth="1180.0" styleClass="hero-screen"
+           stylesheets="@grand-prix.css"
+           xmlns="http://javafx.com/javafx/21"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="application.SettingsController">
+    <children>
+        <VBox alignment="CENTER" maxWidth="760.0" spacing="22.0" styleClass="glass-panel,settings-panel">
+            <padding>
+                <Insets bottom="42.0" left="58.0" right="58.0" top="42.0" />
+            </padding>
+            <Label styleClass="panel-kicker" text="PIT CREW" />
+            <Label styleClass="screen-title" text="GAME SETTINGS" />
+
+            <GridPane alignment="CENTER" hgap="42.0" vgap="24.0">
+                <Label styleClass="field-label" text="DIFFICULTY"
+                       GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                <ComboBox fx:id="difficultyComboBox" prefWidth="250.0"
+                          GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                <Label styleClass="field-label" text="AIM ASSIST"
+                       GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                <CheckBox fx:id="strikeZoneCheckBox" text="SHOW SUBTLE AIM CURSOR"
+                          GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                <Label styleClass="field-label" text="IMPACT EFFECTS"
+                       GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                <CheckBox fx:id="screenShakeCheckBox" text="ENABLE SCREEN SHAKE"
+                          GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            </GridPane>
+
+            <HBox alignment="CENTER" spacing="18.0">
+                <VBox alignment="CENTER" maxWidth="220.0" spacing="6.0" styleClass="mode-card,easy-card">
+                    <Label styleClass="mode-title" text="EASY CUP" />
+                    <Label styleClass="mode-copy" text="Accessible timing, slower pitches, and forgiving defense." textAlignment="CENTER" wrapText="true" />
+                </VBox>
+                <VBox alignment="CENTER" maxWidth="220.0" spacing="6.0" styleClass="mode-card">
+                    <Label styleClass="mode-title" text="NORMAL CUP" />
+                    <Label styleClass="mode-copy" text="Balanced timing, adaptive pitch selection, and reliable fielding." textAlignment="CENTER" wrapText="true" />
+                </VBox>
+                <VBox alignment="CENTER" maxWidth="220.0" spacing="6.0" styleClass="mode-card,hard-card">
+                    <Label styleClass="mode-title" text="HARD CUP" />
+                    <Label styleClass="mode-copy" text="Fast pitches, stronger break, tighter contact, and elite defense." textAlignment="CENTER" wrapText="true" />
+                </VBox>
+            </HBox>
+
+            <HBox alignment="CENTER" spacing="16.0">
+                <Button defaultButton="true" onAction="#handleSave"
+                        styleClass="button,primary-button" text="SAVE SETTINGS" />
+                <Button onAction="#handleCancel" styleClass="button,secondary-button" text="BACK" />
+            </HBox>
+        </VBox>
+    </children>
+</StackPane>

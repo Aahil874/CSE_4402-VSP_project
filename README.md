@@ -30,5 +30,5 @@ Our team is structured to handle the core subsystems of the game engine, split b
 *   **Platform:** 2D Gameplay Engine
 *   **Graphics & Pipeline:** Hardware Accelerated 2D Rendering Engine
 *   **Language Environment:** Java / JavaFX
-
+*   ** JDK 21 is required to compile and run this application
 ---

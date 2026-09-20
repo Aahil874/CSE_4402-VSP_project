@@ -1,0 +1,2 @@
+import application.*;
+var b=new LiveBallController(); var p=new WorldPoint(535,185); var f=new BasePath().point(Base.FIRST); b.launchGroundBall(560,548,0,-190,HitResult.SINGLE); for(int i=0;i<22;i++) b.update(.05); System.out.println(b.state()+" "+b.shadowPosition()); b.field("P",p); b.throwFromFielder(p,f,315); for(int i=0;i<70;i++){b.update(.05); if(i%10==0)System.out.println(i+" "+b.state()+" "+b.shadowPosition()+" h="+b.ball().height());}
