@@ -37,6 +37,8 @@ Our team is structured to handle the core subsystems of the game engine, split b
 
 ## 🚀 How to Run the Game
 
+First you have to clone the repository locally and then: 
+
 ### 🪟 On Windows
 Double-click `run.bat` or open Command Prompt in the project folder and run:
 ```cmd
